@@ -1,0 +1,19 @@
+version: "{build}"
+
+clone_folder: c:\gopath\src\github.com\zealic\xignore
+
+environment:
+  GOPATH: c:\gopath
+
+init:
+  - git config --global core.autocrlf input
+
+install:
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - go version
+
+build: false
+deploy: false
+
+test_script:
+  - go test -v ./... & IF ERRORLEVEL == 1 EXIT 1

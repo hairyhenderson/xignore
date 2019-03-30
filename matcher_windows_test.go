@@ -1,4 +1,4 @@
-//+build !windows
+//+build windows
 
 package xignore
 
@@ -56,10 +56,10 @@ func TestMatches_Folder(t *testing.T) {
 	})
 	require.NoError(t, err)
 
-	require.Equal(t, []string{"foo/bar/1.txt"}, result.MatchedFiles)
-	require.Equal(t, []string{".xignore", "foo/bar/tool/lex.txt", "foo/tar/2.txt"}, result.UnmatchedFiles)
-	require.Equal(t, []string{"foo/bar"}, result.MatchedDirs)
-	require.Equal(t, []string{"foo", "foo/bar/tool", "foo/tar"}, result.UnmatchedDirs)
+	require.Equal(t, []string{`foo\bar\1.txt`}, result.MatchedFiles)
+	require.Equal(t, []string{".xignore", `foo\bar\tool\lex.txt`, `foo\tar\2.txt`}, result.UnmatchedFiles)
+	require.Equal(t, []string{`foo\bar`}, result.MatchedDirs)
+	require.Equal(t, []string{"foo", `foo\bar\tool`, `foo\tar`}, result.UnmatchedDirs)
 }
 
 func TestMatches_Root(t *testing.T) {

@@ -1,3 +1,5 @@
+image:
+  - Visual Studio 2017
 version: "{build}"
 
 clone_folder: c:\gopath\src\github.com\zealic\xignore
@@ -9,7 +11,7 @@ init:
   - git config --global core.autocrlf input
 
 install:
-  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
+  - set PATH=%GOPATH%\bin;c:\go\bin;C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0;C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1;%PATH%
   - go version
 
 build: false

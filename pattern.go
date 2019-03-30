@@ -63,8 +63,8 @@ func (p *Pattern) Match(path string) bool {
 		panic("regexp need compile")
 	}
 
-	if !strings.HasPrefix(path, string(os.PathSeparator)) {
-		path = "/" + path
+	if !filepath.IsAbs(path) {
+		path = string(os.PathSeparator) + path
 	}
 
 	return p.regexp.MatchString(path) || p.regexp.MatchString(filepath.Base(path))
